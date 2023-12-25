@@ -13,6 +13,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 public class Main{
+	
+	// testing!
 	public static void main(String[] args) {
 	
 		// 讀取輸入的3個Keyword，並建立Keyword物件設定權重分別為5,3,1
