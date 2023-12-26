@@ -91,6 +91,8 @@ public class GoogleQuery
 			{
 				String citeUrl = li.select("a").get(0).attr("href").replace("/url?q=", "");
 				String title = li.select("a").get(0).select(".vvjwJb").text();
+				int theFirstChar = citeUrl.indexOf("&");
+				String edit_citeUrl = citeUrl.substring(0, theFirstChar);
 				
 				if(title.equals("")) 
 				{
@@ -98,9 +100,9 @@ public class GoogleQuery
 				}
 				
 				
-				System.out.println("Title: " + title + ", URL: " + citeUrl);
+				System.out.println("Title: " + title + ", URL: " + edit_citeUrl);
 				
-				pageList.add(new WebPage(citeUrl, title));
+				pageList.add(new WebPage(edit_citeUrl, title));
 				//put title and pair into HashMap
 				retVal.put(title, citeUrl);
 

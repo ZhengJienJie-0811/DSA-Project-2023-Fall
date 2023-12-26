@@ -23,8 +23,8 @@ public class Main{
 		String k2 = input.next();
 		String k3 = input.next();
 		ArrayList<Keyword> keywords = new ArrayList<Keyword>();
-		Keyword keyword_1 = new Keyword(k1, 5);
-		Keyword keyword_2 = new Keyword(k2, 3);
+		Keyword keyword_1 = new Keyword(k1, 1);
+		Keyword keyword_2 = new Keyword(k2, 0);
 		Keyword keyword_3 = new Keyword(k3, 1);
 		keywords.add(keyword_1);
 		keywords.add(keyword_2);
@@ -43,9 +43,28 @@ public class Main{
 		
 		ArrayList<WebPage> pageArr = ClothesQuery.getPagelist();
 		
-		for(WebPage wp:pageArr) {		
-				tree.root.addChild(new WebNode(new WebPage(wp.url, wp.name)));
-			}
+//		for(WebPage wp:pageArr) {		
+//			String decode_url = "";
+//			try {
+//				decode_url = java.net.URLDecoder.decode(wp.url,"utf-8");
+//			} catch (UnsupportedEncodingException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}	
+//			tree.root.addChild(new WebNode(new WebPage(decode_url, wp.name)));
+//		}
+		
+		for(int i = 0 ; i < 4 ; i++) {		
+			String decode_url = "";
+			try {
+				decode_url = java.net.URLDecoder.decode(pageArr.get(i).url,"utf-8");
+				System.out.println(decode_url);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			tree.root.addChild(new WebNode(new WebPage(decode_url, pageArr.get(i).name)));
+		}
 		
 		
 		try {
@@ -55,6 +74,7 @@ public class Main{
 			e.printStackTrace();
 		}
 		tree.eularPrintTree();
+		System.out.println("FINISHED");
 		
 	}
 }
