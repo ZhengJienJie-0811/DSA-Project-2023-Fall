@@ -26,14 +26,8 @@ public class GoogleQuery
 		this.searchKeyword = searchKeyword;
 		try 
 		{
-			// This part has been specially handled for Chinese keyword processing. 
-			// You can comment out the following two lines 
-			// and use the line of code in the lower section. 
-			// Also, consider why the results might be incorrect 
-			// when entering Chinese keywords.
 			String encodeKeyword=java.net.URLEncoder.encode(searchKeyword,"utf-8");
-			this.url = "https://www.google.com/search?q="+encodeKeyword+"&oe=utf8&num=20";
-			
+			this.url = "https://www.google.com/search?q="+encodeKeyword+"&oe=utf8&num=20";	
 		}
 		catch (Exception e)
 		{
@@ -82,21 +76,7 @@ public class GoogleQuery
 		Document doc = Jsoup.parse(content);
 		
 		//select particular element(tag) which you want 
-		Elements lis = doc.select("div");
-	//測試
-//		Elements links = lis.select("a[href]");
-//        for (Element link : links) {
-//        	String edit_l = link.attr("href");
-//        	if(edit_l.startsWith("/url?q=")) {
-//        		edit_l = edit_l.replace("/url?q=", "");
-//        		int indexOfChar = edit_l.indexOf("&");
-//        		System.out.println("連結: " + edit_l.substring(0, indexOfChar));
-//        	}
-//        	System.out.println("一個網頁的子網頁結束了");
-//            
-//        }
-		
-	
+		Elements lis = doc.select("div");	
         
 		lis = lis.select(".kCrYT");
 		
@@ -104,11 +84,7 @@ public class GoogleQuery
 		for(Element li : lis)
 		{
 			try 
-			{
-			//SHOW THE CONTENT-->li
-//				System.out.println("SHOW THE WHOLE CONTENT-->li");
-//				System.out.println(li);
-				
+			{				
 				String citeUrl = li.select("a").get(0).attr("href").replace("/url?q=", "");
 				String title = li.select("a").get(0).select(".vvjwJb").text();
 				int theFirstChar = citeUrl.indexOf("&");
@@ -118,33 +94,9 @@ public class GoogleQuery
 				{
 					continue;
 				}
-				
-				
+					
 				System.out.println("Title: " + title + ", URL: " + edit_citeUrl);
-				
-				
-				
-				
-				
-			//Test find child
-	
-//				Elements child_url = li.select("div");
-//				System.out.println("This is one_child URL");
-//				System.out.println(child_url);
-//				child_url.select("BNeawe");
-//				System.out.println("This is child URL");
-//				System.out.println(child_url);
-//				String edit_child_url = child_url.select("a").get(0).attr("href").replace("/url?q=", "");
-//				System.out.println("This is edit_child URL");
-//				System.out.println(edit_child_url);
-//				String edit_child_url_2 = child_url.select("a").get(1).attr("href").replace("/url?q=", "");
-//				System.out.println("This is edit_child URL_2");
-//				System.out.println(edit_child_url_2);
-				
-				
-				
-
-				
+							
 				pageList.add(new WebPage(edit_citeUrl, title));
 				//put title and pair into HashMap
 				retVal.put(title, citeUrl);
