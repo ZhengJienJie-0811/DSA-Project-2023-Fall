@@ -23,8 +23,8 @@ public class Main{
 		String k2 = input.next();
 		String k3 = input.next();
 		ArrayList<Keyword> keywords = new ArrayList<Keyword>();
-		Keyword keyword_1 = new Keyword(k1, 1);
-		Keyword keyword_2 = new Keyword(k2, 0);
+		Keyword keyword_1 = new Keyword(k1, 100);
+		Keyword keyword_2 = new Keyword(k2, 10);
 		Keyword keyword_3 = new Keyword(k3, 1);
 		keywords.add(keyword_1);
 		keywords.add(keyword_2);

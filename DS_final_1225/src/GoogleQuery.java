@@ -83,12 +83,32 @@ public class GoogleQuery
 		
 		//select particular element(tag) which you want 
 		Elements lis = doc.select("div");
+	//測試
+//		Elements links = lis.select("a[href]");
+//        for (Element link : links) {
+//        	String edit_l = link.attr("href");
+//        	if(edit_l.startsWith("/url?q=")) {
+//        		edit_l = edit_l.replace("/url?q=", "");
+//        		int indexOfChar = edit_l.indexOf("&");
+//        		System.out.println("連結: " + edit_l.substring(0, indexOfChar));
+//        	}
+//        	System.out.println("一個網頁的子網頁結束了");
+//            
+//        }
+		
+	
+        
 		lis = lis.select(".kCrYT");
+		
 		pageList = new ArrayList<WebPage>();
 		for(Element li : lis)
 		{
 			try 
 			{
+			//SHOW THE CONTENT-->li
+//				System.out.println("SHOW THE WHOLE CONTENT-->li");
+//				System.out.println(li);
+				
 				String citeUrl = li.select("a").get(0).attr("href").replace("/url?q=", "");
 				String title = li.select("a").get(0).select(".vvjwJb").text();
 				int theFirstChar = citeUrl.indexOf("&");
@@ -102,6 +122,29 @@ public class GoogleQuery
 				
 				System.out.println("Title: " + title + ", URL: " + edit_citeUrl);
 				
+				
+				
+				
+				
+			//Test find child
+	
+//				Elements child_url = li.select("div");
+//				System.out.println("This is one_child URL");
+//				System.out.println(child_url);
+//				child_url.select("BNeawe");
+//				System.out.println("This is child URL");
+//				System.out.println(child_url);
+//				String edit_child_url = child_url.select("a").get(0).attr("href").replace("/url?q=", "");
+//				System.out.println("This is edit_child URL");
+//				System.out.println(edit_child_url);
+//				String edit_child_url_2 = child_url.select("a").get(1).attr("href").replace("/url?q=", "");
+//				System.out.println("This is edit_child URL_2");
+//				System.out.println(edit_child_url_2);
+				
+				
+				
+
+				
 				pageList.add(new WebPage(edit_citeUrl, title));
 				//put title and pair into HashMap
 				retVal.put(title, citeUrl);
@@ -111,6 +154,24 @@ public class GoogleQuery
 //				e.printStackTrace();
 			}
 		}
+		
+		//測試二-->這個Try-catch可以抓取網址中的所有子網頁
+		try {
+			// 連接到網站
+			System.out.println("這是測試");
+			String text_x = java.net.URLDecoder.decode(pageList.get(1).url,"utf-8");
+			System.out.println("https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/clothes");
+			System.out.println(text_x);
+			Document doc_1 = Jsoup.connect(text_x).get();
+
+		    // 提取並打印所有連結
+		    Elements links = doc_1.select("a[href]");
+		    for (Element link : links) {
+		    	System.out.println("連結: " + link.attr("abs:href"));
+		    	}
+		    } catch (Exception e) {
+		            e.printStackTrace();
+		    }
 		
 		return retVal;
 	}
