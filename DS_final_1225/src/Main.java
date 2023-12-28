@@ -59,7 +59,7 @@ public class Main{
 			ArrayList<WebNode> root_child_child = new ArrayList<WebNode>();
 			root_child_child = ClothesQuery.findChildUrl(pageArr.get(i).url);
 			for(int j = 0; j < root_child_child.size(); j++) {
-				tree.root.children.get(i).children.add(new WebNode(new WebPage("https://tw.dictionary.search.yahoo.com/;_ylt=Awrtkq3ZaY1lSWsJ2aN9rolQ","TEST")));
+				//tree.root.children.get(i).children.add(new WebNode(new WebPage("https://tw.dictionary.search.yahoo.com/;_ylt=Awrtkq3ZaY1lSWsJ2aN9rolQ","TEST")));
 				tree.root.children.get(i).children.add(root_child_child.get(j));
 			}
 		}

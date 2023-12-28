@@ -20,10 +20,15 @@ public class WebTree
 		// YOUR TURN
 		// 3. compute the score of children nodes via post-order, then setNodeScore for
 		// startNode
-		if(!startNode.children.isEmpty())
-			for(int i = 0; i < startNode.children.size(); i++) {
-				startNode.children.get(i).setNodeScore(keywords);
-			}
+//		if(!startNode.children.isEmpty())
+//			for(int i = 0; i < startNode.children.size(); i++) {
+//				startNode.children.get(i).setNodeScore(keywords);
+//			}
+//		startNode.setNodeScore(keywords);
+		for(WebNode n: startNode.children) {
+			setPostOrderScore(n,keywords);
+			n.setNodeScore(keywords);
+		}
 		startNode.setNodeScore(keywords);
 		
 
@@ -46,10 +51,13 @@ public class WebTree
 		
 		// YOUR TURN
 		// 4. print child via pre-order
-		if(!startNode.children.isEmpty())
-			for(int i = 0; i < startNode.children.size(); i++) {
-				eularPrintTree(startNode.children.get(i));
-			}
+//		if(!startNode.children.isEmpty())
+//			for(int i = 0; i < startNode.children.size(); i++) {
+//				eularPrintTree(startNode.children.get(i));
+//			}
+		for(WebNode child: startNode.children) {
+			eularPrintTree(child);
+		}
 
 		System.out.print(")");
 
