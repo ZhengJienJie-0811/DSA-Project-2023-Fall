@@ -192,7 +192,7 @@ public class GoogleQuery
 		    
 		    for (Element link : links) {
 		    	//控制孩子數量在15個
-		    	if(fifteen_childs.size() < 15) {
+		    	if(fifteen_childs.size() < 10) {
 		    		String child_url = "";
 		    		child_url = link.attr("abs:href");
 		    		fifteen_childs.add(new WebNode(new WebPage(child_url)));

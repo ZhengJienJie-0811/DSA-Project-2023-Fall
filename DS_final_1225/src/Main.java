@@ -74,5 +74,6 @@ public class Main{
 		tree.eularPrintTree();
 		System.out.println("FINISHED");
 		
+		input.close();
 	}
 }

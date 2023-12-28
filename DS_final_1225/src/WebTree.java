@@ -27,11 +27,9 @@ public class WebTree
 //		startNode.setNodeScore(keywords);
 		for(WebNode n: startNode.children) {
 			setPostOrderScore(n,keywords);
-			n.setNodeScore(keywords);
+//			n.setNodeScore(keywords);
 		}
 		startNode.setNodeScore(keywords);
-		
-
 	}
 
 	public void eularPrintTree()
