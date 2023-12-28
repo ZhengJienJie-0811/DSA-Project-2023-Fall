@@ -135,7 +135,7 @@ public class GoogleQuery
 				System.out.println("Title: " + title + ", URL: " + decoded_citeUrl);
 				
 				
-				
+			
 				
 				
 			//Test find child
