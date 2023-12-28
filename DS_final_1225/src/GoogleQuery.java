@@ -191,12 +191,24 @@ public class GoogleQuery
 		    Elements links = doc_1.select("a[href]");
 		    
 		    for (Element link : links) {
-		    	//控制孩子數量在15個
+		    	//控制孩子數量在10個
 		    	if(fifteen_childs.size() < 10) {
 		    		String child_url = "";
 		    		child_url = link.attr("abs:href");
-		    		fifteen_childs.add(new WebNode(new WebPage(child_url)));
-		    		System.out.println("連結: " + child_url);
+		    		//檢查父網頁中是否有重複的子網頁
+		    		boolean check_repeat = false;
+		    		if(fifteen_childs.size()>1) {
+		    			for(int m = 0; m < fifteen_childs.size(); m++) {
+		    				check_repeat = fifteen_childs.get(m).webPage.url.contentEquals(child_url);
+		    			}
+		    		}
+		    		if(check_repeat == true) {
+		    			continue;
+		    		}
+		    		else {
+		    			fifteen_childs.add(new WebNode(new WebPage(child_url)));
+		    			System.out.println("連結: " + child_url);
+		    		}
 		    	}
 		    	
 		    }

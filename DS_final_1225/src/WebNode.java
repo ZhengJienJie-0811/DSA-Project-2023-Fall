@@ -60,4 +60,8 @@ public class WebNode
 		}
 		return retVal;
 	}
+	
+	public double getNodeScore() {
+		return nodeScore;
+	}
 }

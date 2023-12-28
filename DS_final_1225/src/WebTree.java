@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class WebTree
 {
@@ -37,32 +38,29 @@ public class WebTree
 		eularPrintTree(root);
 	}
 
-	private void eularPrintTree(WebNode startNode)
-	{
-		int nodeDepth = startNode.getDepth();
+	private void eularPrintTree(WebNode startNode) {
+	     int nodeDepth = startNode.getDepth();
 
-		if (nodeDepth > 1)
-			System.out.print("\n" + repeat("\t", nodeDepth - 1));
+	     if (nodeDepth > 1)
+	         System.out.print("\n" + repeat("\t", nodeDepth - 1));
 
-		System.out.print("(");
-		System.out.print(startNode.webPage.name + "," + startNode.nodeScore);
-		
-		// YOUR TURN
-		// 4. print child via pre-order
-//		if(!startNode.children.isEmpty())
-//			for(int i = 0; i < startNode.children.size(); i++) {
-//				eularPrintTree(startNode.children.get(i));
-//			}
-		for(WebNode child: startNode.children) {
-			eularPrintTree(child);
-		}
+	     System.out.print("(");
+	     System.out.print(startNode.webPage.name + "," + startNode.nodeScore);
 
-		System.out.print(")");
+	     // Sort children by score in descending order
+	     List<WebNode> sortedChildren = new ArrayList<>(startNode.children);
+	     sortedChildren.sort((node1, node2) -> Double.compare(node2.getNodeScore(), node1.getNodeScore()));
 
-		if (startNode.isTheLastChild())
-			System.out.print("\n" + repeat("\t", nodeDepth - 2));
+	     for (WebNode child : sortedChildren) {
+	         eularPrintTree(child);
+	     }
+
+	     System.out.print(")");
+
+	     if (startNode.isTheLastChild())
+	         System.out.print("\n" + repeat("\t", nodeDepth - 2));
 	}
-
+	
 	private String repeat(String str, int repeat)
 	{
 		String retVal = "";
