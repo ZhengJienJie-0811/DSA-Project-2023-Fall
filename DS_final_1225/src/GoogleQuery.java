@@ -158,6 +158,9 @@ public class GoogleQuery
 
 				
 				pageList.add(new WebPage(decoded_citeUrl, title));
+				
+			
+				
 				//put title and pair into HashMap
 				retVal.put(title, citeUrl);
 
@@ -167,25 +170,41 @@ public class GoogleQuery
 			}
 		}
 		
+		
+		
+		return retVal;
+	}
+	
+	public ArrayList<WebNode> findChildUrl(String father_url) {
+		ArrayList<WebNode> fifteen_childs = new ArrayList<WebNode>();
 		//測試二-->這個Try-catch可以抓取網址中的所有子網頁
 		try {
 			// 連接到網站
-			System.out.println("這是測試");
-			String text_x = java.net.URLDecoder.decode(pageList.get(1).url,"utf-8");
-			System.out.println("https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/clothes");
-			System.out.println(text_x);
+			System.out.println("這是實際測試");
+//			int latest = pageList.size()-1;
+			String text_x = java.net.URLDecoder.decode(father_url,"utf-8");
+			//System.out.println("https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/clothes");
+			//System.out.println(text_x);
 			Document doc_1 = Jsoup.connect(text_x).get();
 
 		    // 提取並打印所有連結
 		    Elements links = doc_1.select("a[href]");
+		    
 		    for (Element link : links) {
-		    	System.out.println("連結: " + link.attr("abs:href"));
+		    	//控制孩子數量在15個
+		    	if(fifteen_childs.size() < 15) {
+		    		String child_url = "";
+		    		child_url = link.attr("abs:href");
+		    		fifteen_childs.add(new WebNode(new WebPage(child_url)));
+		    		System.out.println("連結: " + child_url);
 		    	}
-		    } catch (Exception e) {
-		            e.printStackTrace();
+		    	
 		    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return fifteen_childs;
 		
-		return retVal;
 	}
 	
 	public ArrayList getPagelist() {

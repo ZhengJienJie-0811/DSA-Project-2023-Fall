@@ -23,8 +23,8 @@ public class Main{
 		String k2 = input.next();
 		String k3 = input.next();
 		ArrayList<Keyword> keywords = new ArrayList<Keyword>();
-		Keyword keyword_1 = new Keyword(k1, 100);
-		Keyword keyword_2 = new Keyword(k2, 10);
+		Keyword keyword_1 = new Keyword(k1, 5);
+		Keyword keyword_2 = new Keyword(k2, 3);
 		Keyword keyword_3 = new Keyword(k3, 1);
 		keywords.add(keyword_1);
 		keywords.add(keyword_2);
@@ -54,16 +54,14 @@ public class Main{
 //			tree.root.addChild(new WebNode(new WebPage(decode_url, wp.name)));
 //		}
 		
-		for(int i = 0 ; i < 4 ; i++) {		
-//			String decode_url = "";
-//			try {
-//				decode_url = java.net.URLDecoder.decode(pageArr.get(i).url,"utf-8");
-//				System.out.println(pageArr.get(i).url);
-//			} catch (UnsupportedEncodingException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}	
+		for(int i = 0 ; i < 4 ; i++) {	
 			tree.root.addChild(new WebNode(new WebPage(pageArr.get(i).url, pageArr.get(i).name)));
+			ArrayList<WebNode> root_child_child = new ArrayList<WebNode>();
+			root_child_child = ClothesQuery.findChildUrl(pageArr.get(i).url);
+			for(int j = 0; j < root_child_child.size(); j++) {
+				tree.root.children.get(i).children.add(new WebNode(new WebPage("https://tw.dictionary.search.yahoo.com/;_ylt=Awrtkq3ZaY1lSWsJ2aN9rolQ","TEST")));
+				tree.root.children.get(i).children.add(root_child_child.get(j));
+			}
 		}
 		
 		

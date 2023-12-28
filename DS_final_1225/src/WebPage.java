@@ -14,6 +14,11 @@ public class WebPage
 		this.name = name;
 		this.counter = new KeywordCounter(url);
 	}
+	public WebPage(String url)
+	{
+		this.url = url;
+		this.counter = new KeywordCounter(url);
+	}
 
 	public void setScore(ArrayList<Keyword> keywords) throws IOException
 	{
