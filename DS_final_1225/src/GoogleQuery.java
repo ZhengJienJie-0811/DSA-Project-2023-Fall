@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -113,6 +114,17 @@ public class GoogleQuery
 				String title = li.select("a").get(0).select(".vvjwJb").text();
 				int theFirstChar = citeUrl.indexOf("&");
 				String edit_citeUrl = citeUrl.substring(0, theFirstChar);
+			
+				//直接在這裡把從HTML中直接抓下來的網址decode
+				String decoded_citeUrl = "";
+				try {
+					decoded_citeUrl = java.net.URLDecoder.decode(edit_citeUrl,"utf-8");
+					System.out.println(decoded_citeUrl);
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+				
 				
 				if(title.equals("")) 
 				{
@@ -120,7 +132,7 @@ public class GoogleQuery
 				}
 				
 				
-				System.out.println("Title: " + title + ", URL: " + edit_citeUrl);
+				System.out.println("Title: " + title + ", URL: " + decoded_citeUrl);
 				
 				
 				
@@ -145,7 +157,7 @@ public class GoogleQuery
 				
 
 				
-				pageList.add(new WebPage(edit_citeUrl, title));
+				pageList.add(new WebPage(decoded_citeUrl, title));
 				//put title and pair into HashMap
 				retVal.put(title, citeUrl);
 

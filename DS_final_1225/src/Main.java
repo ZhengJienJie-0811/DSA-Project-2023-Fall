@@ -55,15 +55,15 @@ public class Main{
 //		}
 		
 		for(int i = 0 ; i < 4 ; i++) {		
-			String decode_url = "";
-			try {
-				decode_url = java.net.URLDecoder.decode(pageArr.get(i).url,"utf-8");
-				System.out.println(decode_url);
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-			tree.root.addChild(new WebNode(new WebPage(decode_url, pageArr.get(i).name)));
+//			String decode_url = "";
+//			try {
+//				decode_url = java.net.URLDecoder.decode(pageArr.get(i).url,"utf-8");
+//				System.out.println(pageArr.get(i).url);
+//			} catch (UnsupportedEncodingException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}	
+			tree.root.addChild(new WebNode(new WebPage(pageArr.get(i).url, pageArr.get(i).name)));
 		}
 		
 		
