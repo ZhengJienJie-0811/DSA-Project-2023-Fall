@@ -33,7 +33,7 @@ public class Main{
 		//利用googleQuery找尋有關主題-->Clothes的網頁
 		GoogleQuery ClothesQuery = new GoogleQuery("Clothes");
 		
-		WebPage root = new WebPage("http://www.google.com/search?q="+"clothes"+"&oe=utf8&num=30","searchResult");
+		WebPage root = new WebPage("https://www.java.com/zh-TW/","searchResult");
 		WebTree tree = new WebTree(root);
 		
 		try {
