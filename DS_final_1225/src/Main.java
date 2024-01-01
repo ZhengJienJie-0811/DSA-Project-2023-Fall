@@ -90,7 +90,7 @@ public class Main{
 			e.printStackTrace();
 		}
 		tree.eularPrintTree();
-//		System.out.println("FINISHED");
+
 		
 	}
 }
