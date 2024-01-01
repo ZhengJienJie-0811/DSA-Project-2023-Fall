@@ -48,8 +48,10 @@ public class WebTree
 	         System.out.print("\n" + repeat("\t", nodeDepth - 1));
 
 	     System.out.print("(");
-	     System.out.print(startNode.webPage.name + "," + startNode.nodeScore);
-
+	     //System.out.print(startNode.webPage.name + "," + startNode.nodeScore);
+	     System.out.print(startNode.webPage.name + "," );
+	     System.out.printf("%.1f", startNode.nodeScore);
+	     
 	     // Sort children by score in descending order
 	     List<WebNode> sortedChildren = new ArrayList<>(startNode.children);
 	     sortedChildren.sort((node1, node2) -> Double.compare(node2.getNodeScore(), node1.getNodeScore()));

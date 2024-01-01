@@ -26,7 +26,7 @@ public class WebPage
 		// YOUR TURN
 //		1. calculate the score of this webPage
 		for(int i = 0; i < keywords.size(); i++) {
-			score += counter.countKeyword(keywords.get(i).name) * keywords.get(i).weight;
+			score += (counter.countKeyword(keywords.get(i).name) * (keywords.get(i).weight));
 		}
 
 	}
