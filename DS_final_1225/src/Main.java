@@ -32,7 +32,8 @@ public class Main{
 		
 		//利用googleQuery找尋有關主題-->Clothes的網頁
 		GoogleQuery ClothesQuery = new GoogleQuery("Clothes");
-		WebPage root = new WebPage("http://soslab.nccu.edu.tw/Welcome.html", "searchResult");
+		
+		WebPage root = new WebPage("http://www.google.com/search?q="+"clothes"+"&oe=utf8&num=30","searchResult");
 		WebTree tree = new WebTree(root);
 		
 		try {
@@ -54,7 +55,7 @@ public class Main{
 //			tree.root.addChild(new WebNode(new WebPage(decode_url, wp.name)));
 //		}
 		
-		for(int i = 0 ; i < 4 ; i++) {	
+		for(int i = 0; i < 3 ; i++) {	
 			tree.root.addChild(new WebNode(new WebPage(pageArr.get(i).url, pageArr.get(i).name)));
 			ArrayList<WebNode> root_child_child = new ArrayList<WebNode>();
 			root_child_child = ClothesQuery.findChildUrl(pageArr.get(i).url);
@@ -67,6 +68,7 @@ public class Main{
 		
 		try {
 			tree.setPostOrderScore(keywords);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,6 +76,5 @@ public class Main{
 		tree.eularPrintTree();
 		System.out.println("FINISHED");
 		
-		input.close();
 	}
 }
