@@ -54,7 +54,7 @@ public class WebTree
 
 	        System.out.print("(");
 	        System.out.print(startNode.webPage.name + "," + startNode.nodeScore);
-
+	        
 	        List<WebNode> sortedChildren = new ArrayList<>(startNode.children);
 	        sortedChildren.sort((node1, node2) -> Double.compare(node2.getNodeScore(), node1.getNodeScore()));
 
@@ -65,7 +65,7 @@ public class WebTree
 	        System.out.print(")");
 
 	        if (startNode.isTheLastChild()) {
-	            System.out.print("\n" + repeat("\t", nodeDepth - 2));
+	            System.out.print(repeat("\t", nodeDepth - 2));
 	        }
 	}
 	
