@@ -65,7 +65,7 @@ public class WebTree
 	        System.out.print(")");
 
 	        if (startNode.isTheLastChild()) {
-	            System.out.print("\n" + repeat("\t", nodeDepth - 2));
+	            System.out.print(repeat("\t", nodeDepth - 2));
 	        }
 	}
 	
