@@ -72,7 +72,15 @@ public class Main{
 //			tree.root.addChild(new WebNode(new WebPage(decode_url, wp.name)));
 //		}
 		
-		for(int i = 0; i < 4 ; i++) {	
+		pageArr.remove(4); //該網頁有問題
+		
+		
+		System.out.println(pageArr.size());
+		for(int i = 0; i < 14 ; i++) {	
+			//H&M的網頁有設授權機制
+			if(pageArr.get(i).url.contentEquals("https://www2.hm.com/")) {
+				pageArr.remove(i);
+			}
 			tree.root.addChild(new WebNode(new WebPage(pageArr.get(i).url, pageArr.get(i).name)));
 			ArrayList<WebNode> root_child_child = new ArrayList<WebNode>();
 			root_child_child = ClothesQuery.findChildUrl(pageArr.get(i).url);

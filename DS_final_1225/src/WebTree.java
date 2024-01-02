@@ -31,7 +31,7 @@ public class WebTree
 			setPostOrderScore(n,keywords);
 			n.setNodeScore(keywords);
 		}
-		startNode.setNodeScore(keywords);
+		//startNode.setNodeScore(keywords);
 		
 
 	}

@@ -208,6 +208,21 @@ public class GoogleQuery
 		    		if(check_repeat == true) {
 		    			continue;
 		    		}
+		    		if(child_url.startsWith("javascript")) {
+		    			continue;
+		    		}
+		    		if(child_url.startsWith("https:") != true) {
+		    			continue;
+		    		}
+		    		if(child_url.contentEquals("https://www.空中家教.com/web/") || child_url.contentEquals("https://help.voicetube.com/hc/zh-tw/categories/360001591732")) {
+		    			continue;
+		    		}
+		    		if(child_url.startsWith("https://www.hm.com" )) {
+		    			continue;
+		    		}
+		    		if(child_url.endsWith("twitter")) {
+		    			
+		    		}
 		    		else {
 		    			fifteen_childs.add(new WebNode(new WebPage(child_url)));
 		    			System.out.println("連結: " + child_url);

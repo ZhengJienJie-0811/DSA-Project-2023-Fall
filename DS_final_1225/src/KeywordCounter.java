@@ -45,19 +45,60 @@ public class KeywordCounter
 		// upper-case:
 		content = content.toUpperCase();
 		keyword = keyword.toUpperCase();
-//		System.out.println("觸發得到嗎????????");
-//		System.out.println(content);
+
 
 		int retVal = 0;
-		int fromIdx = 0;
-		int found = -1;
-
-		while ((found = content.indexOf(keyword, fromIdx)) != -1)
-		{
+		int i = content.length();
+		int j = keyword.length();
+		int n = BoyerMoore(content, keyword);
+		while(n != -1) {
+			content = content.substring(n + j, i);
+			i = content.length();
+			n = BoyerMoore(content, keyword);
 			retVal++;
-			fromIdx = found + keyword.length();
 		}
 
 		return retVal;
 	}
+	
+//使用BoyerMoore Alg
+	public int BoyerMoore(String T, String P){
+    	int i = P.length() - 1;
+    	int j = P.length() - 1;
+    	do {
+    		if(P.charAt(j) == T.charAt(i)) {
+    			if(j == 0) {
+    				return i;
+    			}else {
+    				i--;
+    				j--;
+    			}
+    		} else {
+    			i = i + P.length() - min(j, 1 +last(T.charAt(i), P));
+    			j = P.length() - 1;
+    		}
+    	} while(i <= T.length() -1);
+    	
+    	return -1;
+    }
+
+    public int last(char c, String P){
+    	// Bonus: Implement last occurence function
+    	for(int i = P.length() - 1; i >= 0; i--) {
+    		if(P.charAt(i) == c) {
+    			return i;
+    		}
+    	}
+    	return -1;
+ 
+    }
+
+    public int min(int a, int b){
+        if (a < b)
+            return a;
+        else if (b < a)
+            return b;
+        else 
+            return a;
+    }
 }
