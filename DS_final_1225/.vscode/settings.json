@@ -1,0 +1,13 @@
+{
+  "java.project.referencedLibraries": {
+    "include": [
+      "lib/**/*.jar",
+      "/Users/USER/jsoup/jsoup-1.16.2.jar",
+      "/Users/USER/Downloads/jsoup-1.17.1.jar",
+      "/Users/USER/Downloads/jsoup-1.17.2.jar"
+    ],
+    "exclude": [
+      "/DS_final_1225/C:/Users/alex9/eclipse-workspace/jsoup-1.17.1.jar"
+    ]
+  }
+}
