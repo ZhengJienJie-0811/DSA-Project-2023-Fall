@@ -13,6 +13,7 @@ public class WebTree
 
 	public void setPostOrderScore(ArrayList<Keyword> keywords) throws IOException
 	{
+		
 		setPostOrderScore(root, keywords);
 	}
 
@@ -28,37 +29,44 @@ public class WebTree
 //		startNode.setNodeScore(keywords);
 		for(WebNode n: startNode.children) {
 			setPostOrderScore(n,keywords);
-//			n.setNodeScore(keywords);
+			n.setNodeScore(keywords);
 		}
-		startNode.setNodeScore(keywords);
+		//startNode.setNodeScore(keywords);
+		
+
 	}
 
 	public void eularPrintTree()
 	{
-		eularPrintTree(root);
+		eularPrintTree(root,3);
 	}
 
-	private void eularPrintTree(WebNode startNode) {
-	     int nodeDepth = startNode.getDepth();
+	private void eularPrintTree(WebNode startNode,int maxDepth) {
+		 int nodeDepth = startNode.getDepth();
 
-	     if (nodeDepth > 1)
-	         System.out.print("\n" + repeat("\t", nodeDepth - 1));
+	        if (nodeDepth > maxDepth) {
+	            return;
+	        }
 
-	     System.out.print("(");
-	     System.out.print(startNode.webPage.name + "," + startNode.nodeScore);
+	        if (nodeDepth > 1) {
+	            System.out.print("\n" + repeat("\t", nodeDepth - 1));
+	        }
 
-	     // Sort children by score in descending order
-	     List<WebNode> sortedChildren = new ArrayList<>(startNode.children);
-	     sortedChildren.sort((node1, node2) -> Double.compare(node2.getNodeScore(), node1.getNodeScore()));
+	        System.out.print("(");
+	        System.out.print(startNode.webPage.name + "," + startNode.nodeScore);
+	        
+	        List<WebNode> sortedChildren = new ArrayList<>(startNode.children);
+	        sortedChildren.sort((node1, node2) -> Double.compare(node2.getNodeScore(), node1.getNodeScore()));
 
-	     for (WebNode child : sortedChildren) {
-	         eularPrintTree(child);
-	     }
+	        for (WebNode child : sortedChildren) {
+	            eularPrintTree(child, maxDepth - nodeDepth);
+	        }
 
-	     System.out.print(")");
+	        System.out.print(")");
 
-	     if (startNode.isTheLastChild())
-	         System.out.print("\n" + repeat("\t", nodeDepth - 2));
+	        if (startNode.isTheLastChild()) {
+	            System.out.print(repeat("\t", nodeDepth - 2));
+	        }
 	}
 	
 	private String repeat(String str, int repeat)

@@ -26,10 +26,13 @@ public class WebNode
 		//		3.nodeScore must be the score of this webPage 
 		//		  plus all children's nodeScore
 		
+//		System.out.println(webPage.name);
 		webPage.setScore(keywords);
+//		System.out.println("名字："+ webPage.name + webPage.score);
 		nodeScore = webPage.score;
 		for(int i = 0; i < children.size(); i++) {
 			nodeScore += children.get(i).nodeScore;;
+//			System.out.println(nodeScore);
 		}
 	}
 

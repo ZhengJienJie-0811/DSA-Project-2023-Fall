@@ -191,8 +191,11 @@ public class GoogleQuery
 		    Elements links = doc_1.select("a[href]");
 		    
 		    for (Element link : links) {
+
 		    	//控制孩子數量在10個
 		    	if(fifteen_childs.size() < 10) {
+		    	//控制孩子數量在15個
+		    	if(fifteen_childs.size() < 15) {
 		    		String child_url = "";
 		    		child_url = link.attr("abs:href");
 		    		//檢查父網頁中是否有重複的子網頁
@@ -205,14 +208,33 @@ public class GoogleQuery
 		    		if(check_repeat == true) {
 		    			continue;
 		    		}
+		    		if(child_url.startsWith("javascript")) {
+		    			continue;
+		    		}
+		    		if(child_url.startsWith("https:") != true) {
+		    			continue;
+		    		}
+		    		if(child_url.contentEquals("https://www.空中家教.com/web/") || child_url.contentEquals("https://help.voicetube.com/hc/zh-tw/categories/360001591732")) {
+		    			continue;
+		    		}
+		    		if(child_url.startsWith("https://www.hm.com" )) {
+		    			continue;
+		    		}
+		    		if(child_url.endsWith("twitter")) {
+		    			
+		    		}
 		    		else {
 		    			fifteen_childs.add(new WebNode(new WebPage(child_url)));
 		    			System.out.println("連結: " + child_url);
 		    		}
 		    	}
-		    	
 		    }
-		} catch (Exception e) {
+		    }
+		}
+		    	
+		    	
+		    	
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return fifteen_childs;
