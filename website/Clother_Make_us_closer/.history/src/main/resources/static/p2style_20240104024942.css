@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wgt@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex-start;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('background.jpeg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Fix the background */
+    margin: 0;
+}
+
+.head {
+    background-color:transparent;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    font-size: 24px;
+   
+}
+
+/* .wrapper {
+    width: 1300px;
+    height:200px;
+    border-radius: 20px;
+    padding: 60px 40px 10px 40px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0px 0px 10px rgba(0,0,0,.1);
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 52px auto;
+} */
+
+.input-box {
+    width: 300px;
+    position: relative;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom:none;
+    outline: none;
+    font-size: 16px;
+}
+
+.input-box input::placeholder {
+    color: #333;
+}
+
+.input-box input:focus {
+    border-bottom: none; /* Change to your desired focus color */
+}
+
+/* 搜尋結果方塊的基本樣式 */
+
+.result-style {
+    width: 1300px;
+    height: 200px;
+    margin: 52px auto;
+    padding: 15px;
+    border-radius: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    /* Add this to vertically center the items */
+    justify-content: center;
+    /* Center the items horizontally */
+    font-size: 2.5em;
+    /* Increase the font size */
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
+    transition: all 0.3s ease;
+}
+
+.result-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* Adjust as needed */
+}
+
+.result-url {
+    color: #555;
+    /* Adjust as needed */
+    font-size: 0.8em;
+    /* Adjust as needed */
+}
+
+/* You may want to style the inner div if you've added it */
+.result-inner {
+    text-align: center;
+    /* Center the text inside the inner div */
+    width: 100%;
+    /* Take the full width of the parent */
+}
+
+.result-style:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 滑鼠懸停時的陰影效果 */
+}
+
+/* 標題的樣式 */
+.result-style h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* 描述的樣式 */
+.result-style p {
+    font-size: 1em;
+    color: #333;
+}
+
