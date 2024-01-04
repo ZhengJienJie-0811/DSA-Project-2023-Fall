@@ -8,6 +8,3 @@ Outfit 4
 Trend 3
 Accessories 2
 Comfort 1
-服飾 10
-衣服 10
-風格 9

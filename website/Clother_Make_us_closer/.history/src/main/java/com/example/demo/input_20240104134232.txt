@@ -1,0 +1,10 @@
+Fashion 100
+Style 0.9
+Fabric 0.8
+Color 0.7
+Size 0.6
+Brand 0.5
+Outfit 0.4
+Trend 0.3
+Accessories 0.2
+Comfort 0.1

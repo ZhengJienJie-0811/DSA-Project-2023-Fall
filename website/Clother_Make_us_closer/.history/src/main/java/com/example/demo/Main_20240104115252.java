@@ -33,16 +33,15 @@ public class Main {
     public static void initiateSearch() throws FileNotFoundException {
 
         ArrayList<Keyword> keywords = new ArrayList<Keyword>();
-        Keyword keyword_1 = new Keyword(k1, 50);
-        Keyword keyword_2 = new Keyword(k2, 30);
-        Keyword keyword_3 = new Keyword(k3, 10);
+        Keyword keyword_1 = new Keyword(k1, 5);
+        Keyword keyword_2 = new Keyword(k2, 3);
+        Keyword keyword_3 = new Keyword(k3, 1);
         Keyword keyword4 = new Keyword("字典", -200);
         Keyword keyword5 = new Keyword("翻譯", -200);
         keywords.add(keyword_1);
         keywords.add(keyword_2);
         keywords.add(keyword_3);
         keywords.add(keyword4);
-        keywords.add(keyword5);
 
         // 內建keyword
         File file = new File("src/main/java/com/example/demo/input.txt");
