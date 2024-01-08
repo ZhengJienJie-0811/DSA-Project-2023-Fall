@@ -103,7 +103,7 @@ public class Main {
 
     public static void setKeywords(String target, String k1, String k2, String k3) {
 
-        Main.k0 = target != null ? target : "";
+        Main.target = target != null ? target : "";
         Main.k1 = k1 != null ? k1 : "";
         Main.k2 = k2 != null ? k2 : "";
         Main.k3 = k3 != null ? k3 : "";
